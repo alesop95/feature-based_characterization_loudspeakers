@@ -1,0 +1,120 @@
+___________________________
+To send an audio stream to a device, use the 
+		audioDeviceWriter 
+System object.
+This diagram and the description that follows indicate the data flow when playing a monochannel 
+signal with the audioDeviceWriter System object.
+
+deviceWriter(audioToDevice)
+
+
+Real-Time Processing Loop
+The processing stage passes a frame of variable length to the audioDeviceWriter System object.
+audioDeviceWriter sends the frame to the sound card’s buffer.
+The sound card pulls the oldest frame from the buffer and performs digital-to-analog conversion. 
+The sound card sends the analog chunk to the speaker. If the buffer is empty when the sound card 
+tries to pull from it, the sound card outputs a region of silence. This is referred to as underrun.
+
+
+___________________________
+Configuration
+
+Properties of your audioDeviceWriter specify the driver, device (sound card), and device attributes
+such as sample rate, bit depth, buffer size, and channel mapping between your device's output channels and columns 
+input to your audioDeviceWriter object. 
+Your object communicates these specifications to the driver once at setup
+
+
+To stream data to an audio device:
+- Create the audioDeviceWriter object and set its properties.
+- Call the object with arguments, as if it were a function
+
+
+										^
+	---> deviceWriter = audioDeviceWriter(___,Name,Value) 			|
+										|
+
+sets each property Name to the specified Value.
+
+
+- Driver
+- Device
+- Sample rate
+- Bit depth
+- SupportVariableSizeInput
+- BufferSize
+- ChannelMappingSource
+
+__
+(Example)
+deviceWriter = audioDeviceWriter(44100,'BitDepth','16-bit integer') 
+
+creates a System object, deviceWriter, 
+that operates at a 44.1 kHz sample rate and an 16-bit integer bit depth.
+
+Driver — Driver used to access audio device (Windows only)
+'DirectSound' (default) | 'ASIO' | 'WASAPI'
+
+
+___
+Device used to play audio samples, specified as a character vector or string scalar. 
+Use getAudioDevices to list available devices for the selected driver.
+         ^^^
+devices = getAudioDevices(deviceWriter) returns a list of audio devices that are available 
+and compatible with your I/O audio object, deviceWriter.
+
+
+
+
+%%%%%
+%   %
+% 1 %
+%   %
+%%%%%
+Fare la prova per scrivere un segnale MONO dentro un canale mono
+____________________________________________________________________
+Audio signal to write to device, specified as a matrix. The columns of the matrix are treated 
+as independent audio channels.
+
+
+perchè dall'esempio dice che se deviceWriter è chiamato con una colonna di dati,
+allora due canali sono scritti sul mio audio output device e entrambi corrispondono a quella
+colonna di dati
+
+Specify alternative mappings between channels of your device and columns of the output matrix 
+by indicating the output channel number at an index corresponding to the input column. 
+Set ChannelMappingSource to 'Property'
+
+'Property' –– The ChannelMapping property determines the mapping between columns 
+of input matrix and channels of audio output device
+
+Nondefault mapping between columns of input matrix and channels of output device, 
+specified as a scalar or vector of valid channel indices
+
+(Example)
+
+release(deviceWriter)
+deviceWriter.ChannelMappingSource = 'Property';
+deviceWriter.ChannelMapping = [2,1];
+
+Così significa che la prima colonna di dati scrive sul canale 2 e la seconda colonna sul canale 1
+
+%%%%%
+%   %
+% 2 %
+%   %
+%%%%%
+Adattare tutto al codice scelto
+
+READ FROM FILE AND OUTPUT TO AUDIO DEVICE
+https://it.mathworks.com/help/audio/ref/audiodevicewriter-system-object.html#mw_a1fe2601-6279-4a1d-a75e-194d4e45641e
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%
+https://it.mathworks.com/help/audio/ref/asiosettings.html
+
