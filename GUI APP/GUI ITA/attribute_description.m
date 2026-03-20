@@ -14,7 +14,7 @@ ABT = string(zeros(N_attr,2))
 %
 % loudness description (From ANSI:
 % https://en.wikipedia.org/wiki/Loudness#cite_note-1)
-str_loudness = "Quellâ€™attributo della sensazione uditiva secondo il quale i suoni possono essere ordinati in una scala che si estende da silenzioso a rumoroso.";
+str_loudness = "Quell’attributo della sensazione uditiva secondo il quale i suoni possono essere ordinati in una scala che si estende da silenzioso a rumoroso.";
 
 % attack description
 str_attack = "Transient response. Specifies wheter the drum beats and percussion, etc. are accurate and clear i.e. if you can hear the actual strokes from drumstick, the plucking of the strings etc. it is also espressed as the ability to reproduce each audio source transient cleanly and separated from the rest of the sound image. Imprecise Attack is understood as unclear or a muted impact";
@@ -31,13 +31,13 @@ str_bassdepth = "Denotes how far the bass extends downwards. If it goes down in 
 % Timbral balance description
 str_darkbright = "Denota il bilanciamento tra bassi e alti."
 str_darkbright = str_darkbright + "\n" + "- Scuro: Bassi eccessivi. Sia bassi troppo forti che alti deboli."
-str_darkbright = str_darkbright + "\n" + "- Neutrale: Bassi e Alti sono percepiti con lo stesso volume, câ€™Ã¨ un bilanciamento nella riproduzione. CiÃ² vale anche se sia i bassi che gli alti sono ugualmente deboli o se i bassi e gli alti sono entrambi troppo forti. Se questo porta a delle frequenze medie leggere o marcate, questo viene valutato dalla forza della gamma media."
+str_darkbright = str_darkbright + "\n" + "- Neutrale: Bassi e Alti sono percepiti con lo stesso volume, c’è un bilanciamento nella riproduzione. Ciò vale anche se sia i bassi che gli alti sono ugualmente deboli o se i bassi e gli alti sono entrambi troppo forti. Se questo porta a delle frequenze medie leggere o marcate, questo viene valutato dalla forza della gamma media."
 str_darkbright = str_darkbright + "\n" + "- Chiaro: Alti eccessivi. Sia alti troppo forti che bassi deboli."
-str_darkbright = str_darkbright + "\n" + "La causa per cui il suono puÃ² essere scuro o chiaro puÃ² essere dedotta dalla valutazione dellâ€™intensitÃ  dei bassi o dellâ€™intensitÃ  degli alti"
+str_darkbright = str_darkbright + "\n" + "La causa per cui il suono può essere scuro o chiaro può essere dedotta dalla valutazione dell’intensità dei bassi o dell’intensità degli alti"
 str_darkbright = compose(str_darkbright)
 
 % preference test description (From MUSHRA test example [ITU2003RBS1534])
-str_preference = "Valuta gli stimuli in base alla scala di qualitÃ  continua (CQS)"
+str_preference = "Valuta gli stimuli in base alla scala di qualità continua (CQS)"
 
 str_name = ["LOUDNESS","BILANCIAMENTO TIMBRICO","PREFERENZA"]
 str_descr = [str_loudness, str_darkbright, str_preference]
@@ -49,6 +49,8 @@ end
 
 
 save('attributes_and_description','ABT')
+
+
 
 
 
