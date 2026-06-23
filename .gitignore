@@ -1,0 +1,46 @@
+# Materiali privati e non versionati
+_notes/
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Estratti temporanei
+_notes/.tmp-docx-*/
+.tmp-docx-*/
+
+# Documentazione e tesi (non versionare nuovi PDF/Word)
+# Nota: Feature-based characterization of loudspeakers.pdf e' gia' tracciato nel repo remoto.
+# Per de-tracciarlo: git rm --cached "Feature-based characterization of loudspeakers.pdf"
+*.docx
+*.doc
+*.pptx
+*.ppt
+*.xlsx
+*.xls
+
+# Dati di misura e file binari pesanti
+*.mat
+*.fig
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.csv
+*.wav
+*.flac
+*.mp3
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# MATLAB
+*.asv
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
